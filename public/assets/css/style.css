@@ -3,3 +3,12 @@
 a{
     text-decoration: none;
 }
+
+.bg-cover {
+    background-size: cover !important;
+}
+
+
+body {
+    min-height: 100vh;
+}

@@ -58,6 +58,24 @@ class VilleRepository extends ServiceEntityRepository
         
     }
     
+    public function test (){
+
+
+    }
+
+    public function findByTwoFields(int $population, int $departement)
+    {
+        return $this->createQueryBuilder('u')
+            ->where('u.population > :val1')
+            ->andWhere('u.dept = :val2')
+            ->setParameter('val1', $population)
+            ->setParameter('val2', $departement)
+            ->orderBy('u.id', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 
     /*
     public function findOneBySomeField($value): ?Ville
