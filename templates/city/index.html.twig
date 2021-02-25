@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CityController!{% endblock %}
+
+{% block body %}
+
+
+
+    <div class="container text-center"> 
+    
+    <h2 class="text-center">Liste des villes en bdd :</h2>
+        <div class="row">    
+    
+    {% for item in tableauVille %}
+
+
+    <div class="card text-center col-3 bg-warning mb-1 ms-1" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">{{item.nom}}</h5>
+            <p class="card-text">
+            Pays : {{item.pays}}</br>
+            Departement : {{item.dept}}</br>
+            Population : {{item.population}}</br>
+            </p>
+            <a href="/city/delete/{{item.id}}" class="btn btn-danger">Supprimer</a>
+        </div>
+    </div>
+   
+    {% endfor %}
+    </div>
+    
+</div>
+
+
+{% endblock %}
