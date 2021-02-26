@@ -47,16 +47,20 @@ class CityController extends AbstractController
         $form = $this->createForm(VilleType::class, $ville);
         $form->handleRequest($request);
         $etatFormulaire = false;
+        $contrainte = $this->rechercheContrainte($villeRep, $ville->getDept()) <=3;
+        
+        
+      
+        
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if (($form->isSubmitted() && $form->isValid()) && $contrainte) {
             $ville = $form->getData();
             $this->entityManager->persist($ville);
             $this->entityManager->flush();
             $etatFormulaire = true;
+            var_dump('valide');
 
         }
-
-        // $villeRep->createVille($this->getDoctrine()->getManager(), $nom);
         
 
         return $this->render('city/addCity.html.twig',[
@@ -65,6 +69,17 @@ class CityController extends AbstractController
             'ville' => $ville
         ]);
     }
+
+    
+    private function rechercheContrainte(VilleRepository $villeRepo, $dept): int
+    {
+        
+        $result = $villeRepo->contrainteNombreVille($dept);
+    
+        return $result;
+    }
+
+    
 
 
 

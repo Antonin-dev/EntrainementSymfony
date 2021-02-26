@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ToDoController!{% endblock %}
+
+{% block body %}
+    <div class="container">
+    <h2 class="text-center">Liste des taches :</h2>
+    <div class="row">    
+    
+    {% for item in toDo %}
+        <div class="card text-center col-3 bg-warning mb-1 ms-1" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">{{item.nom}}</h5>
+                <p class="card-text">
+                Date : {{item.date | date('D:m:Y')}}</br>
+                Detail : {{item.detail}}</br>
+                urgent : {{item.urgent}}</br>
+                </p>
+                <a href="/todo/delete/{{item.id}}" class="btn btn-danger">Supprimer</a>
+
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+    
+</div>
+</div>
+{% endblock %}

@@ -36,6 +36,19 @@ class VilleRepository extends ServiceEntityRepository
         ;
     }
 
+    public function contrainteNombreVille($value) : int
+    {
+        return count($this->createQueryBuilder('v')
+            ->andWhere('v.dept = :val')
+            ->setParameter('val', $value)
+            ->orderBy('v.id', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()) 
+        ;
+    }
+
+
     public function createVille($entityManager, $nom)
     {
         // you can fetch the EntityManager via $this->getDoctrine()

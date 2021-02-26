@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ToDoController!{% endblock %}
+
+{% block body %}
+<div class="container">
+{% if etat %}
+
+    <h2 class="text-center">Tache Ajouté : </h2>
+    <p class="text-center">Nom : {{toDo.nom}}</p>
+    <p class="text-center">Date : {{toDo.date | date('D:m:Y')}}</p>
+    <p class="text-center">Detail : {{toDo.detail}}</p>
+
+    {% if toDo.urgent == 1 %}
+        <p class="text-center">Urgent : Oui</p>
+    {% endif %}
+    {% if toDo.urgent == 0 %}
+        <p class="text-center">Urgent : Non</p>
+    {% endif %}
+        
+    
+
+{% endif %}
+
+{{form (form)}}
+</div>
+{% endblock %}
