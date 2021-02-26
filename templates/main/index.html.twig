@@ -6,7 +6,8 @@
 <div class="container text-center">
 
     <button type="button" class="btn btn-warning mb-2"><a class="text-white" href="/city">Afficher les villes</a></br></button></br>
-
+    <button type="button" class="btn btn-warning mb-2"><a class="text-white" href="{{ path ("add_person")}}">Ajouter une personne</a></br></button></br>
+    <button type="button" class="btn btn-warning mb-2"><a class="text-white" href="{{ path ("city_add")}}">Ajouter une ville</a></br></button></br>
     {% for item in tableau %}
         <button type="button" class="btn btn-success mb-2"><a class="text-white" href="/city/{{item.id}}">{{item.nom}}</a></button></br>
     {% endfor %}

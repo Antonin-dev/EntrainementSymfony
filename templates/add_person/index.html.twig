@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AddPersonController!{% endblock %}
+
+{% block body %}
+
+
+
+    {% if valide == true %}
+    <h1>Données enregistré</h1>
+        <p>prenom : {{person.name}}</p>
+        <p>age : {{person.age}}</p>
+         <button type="button" class="btn btn-warning mb-2"><a class="text-white" href="{{ path ("add_person")}}">Ajouter une personne</a></br></button></br>
+        
+    {% endif %}
+    {% if valide == false %}
+    
+               {{form(form)}}
+
+    {% endif %}
+        
+
+    
+
+
+{% endblock %}

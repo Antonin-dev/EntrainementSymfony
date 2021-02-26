@@ -3,13 +3,24 @@
 namespace App\Controller;
 
 use App\Entity\Ville;
+use App\Form\VilleType;
 use App\Repository\VilleRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class CityController extends AbstractController
 {
+
+    private $entityManager;
+
+    public function __construct(EntityManagerInterface $entityManager)
+    {
+        $this->entityManager = $entityManager;
+    }
+
     /**
      * @Route("/city", name="city")
      */
@@ -27,17 +38,31 @@ class CityController extends AbstractController
 
 
     /**
-     * @Route("/city/add/{nom}", name="city_add")
+     * @Route("/city/add/", name="city_add")
      */
-    public function add(VilleRepository $villeRep, $nom): Response
+    public function add(Request $request, VilleRepository $villeRep): Response
     {
         // CREATION D'UNE VILLE
-        
-        $villeRep->createVille($this->getDoctrine()->getManager(), $nom);
+        $ville = new Ville;
+        $form = $this->createForm(VilleType::class, $ville);
+        $form->handleRequest($request);
+        $etatFormulaire = false;
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $ville = $form->getData();
+            $this->entityManager->persist($ville);
+            $this->entityManager->flush();
+            $etatFormulaire = true;
+
+        }
+
+        // $villeRep->createVille($this->getDoctrine()->getManager(), $nom);
         
 
         return $this->render('city/addCity.html.twig',[
-            'villeAdd' => $nom
+            'form' => $form->createView(),
+            'etat' => $etatFormulaire,
+            'ville' => $ville
         ]);
     }
 

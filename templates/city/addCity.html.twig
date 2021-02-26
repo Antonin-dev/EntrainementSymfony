@@ -4,8 +4,29 @@
 
 {% block body %}
 
-<h2>Ville ajouté :</h2>
-<p>{{villeAdd}}</p>
+
+
+{% if etat == true %}
+    <h2>Ville ajouté :</h2>
+    <h3>{{ville.nom}}</h3>
+    <ul>
+        <li>{{ville.population}}</li>
+        <li>{{ville.pays}}</li>
+        <li>{{ville.dept}}</li>
+        <li>{{ville.population}}</li>
+    </ul>
+    <button type="button" class="btn btn-warning mb-2"><a class="text-white" href="{{ path ("city")}}">Voir les villes</a></br></button></br>
+    <button type="button" class="btn btn-warning mb-2"><a class="text-white" href="{{ path ("city_add")}}">Ajouter une autre ville</a></br></button></br>
+   
+
+{% endif %}
+
+{% if etat == false %}
+    {{ form(form) }}
+{% endif %}
+
+
+{# <p>{{villeAdd}}</p> #}
 
     
     

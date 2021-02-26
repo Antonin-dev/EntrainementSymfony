@@ -16,6 +16,7 @@
         {% endblock %}
     </head>
     <body>
+       
         {% block titre %}
         <!-- Bootstrap Static Header -->
 <div style="background: url(https://i.postimg.cc/3N7wnb75/background.jpg)" class="jumbotron bg-cover text-white">
@@ -29,6 +30,10 @@
        
     </div>
 </div>
+
+        {% endblock %}
+         {% block buttonacceuil %}
+            <button type="button" class="btn btn-info mb-2"><a class="text-white" href="{{ path ("main")}}">Acceuil</a></br></button></br>
 
         {% endblock %}
         {% block body %}
