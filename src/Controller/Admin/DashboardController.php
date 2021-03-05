@@ -2,6 +2,8 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Commune;
+use App\Entity\Pays;
 use App\Entity\User;
 use App\Entity\Ville;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -32,5 +34,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linktoDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Villes', 'fas fa-city', Ville::class);
         yield MenuItem::linkToCrud('Utilisateur', 'fas fa-users', User::class);
+        yield MenuItem::linkToCrud('Communes', 'fas fa-truck', Commune::class);
+        yield MenuItem::linkToCrud('Pays', 'fas fa-truck', Pays::class);
     }
 }
