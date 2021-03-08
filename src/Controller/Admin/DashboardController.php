@@ -2,7 +2,9 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Acteur;
 use App\Entity\Commune;
+use App\Entity\Film;
 use App\Entity\Pays;
 use App\Entity\User;
 use App\Entity\Ville;
@@ -36,5 +38,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Utilisateur', 'fas fa-users', User::class);
         yield MenuItem::linkToCrud('Communes', 'fas fa-truck', Commune::class);
         yield MenuItem::linkToCrud('Pays', 'fas fa-truck', Pays::class);
+        yield MenuItem::linkToCrud('Acteurs', 'fas fa-users', Acteur::class);
+        yield MenuItem::linkToCrud('Films', 'fas fa-users', Film::class);
     }
 }

@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello FilmController!{% endblock %}
+
+{% block body %}
+<div class="row ">
+    <h1 class="col-12 ">{{data.titre}}</h1>
+    <p class="col-6">Date : {{data.annee}}</p>
+    <div class="col-6">
+        <h2>Acteurs</h2>
+        <ul>
+            {% for acteur in data.acteurs %}
+                <li>{{acteur}}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    
+    <h2 class="col-12">Cout du film {{data.coutFilm}} $</h2>
+</div>
+
+{% endblock %}
