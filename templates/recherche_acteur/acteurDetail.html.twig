@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello FilmController!{% endblock %}
+
+{% block body %}
+<div class="row justify-content-center ">
+    <div class="col-6">
+        <h1>{{data.titre}}</h1>
+        <p>{{data.annee}}</p>
+        <p>Acteur : {{acteur}}</p>
+    </div>
+</div>
+
+{% endblock %}
