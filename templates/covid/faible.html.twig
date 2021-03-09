@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CovidController!{% endblock %}
+
+{% block body %}
+<h1 class="text-center">Departement le moins touché</h1>
+<h2 class="text-center">{{data.departement}}</h2>
+<p class="text-center">Réanimation + hospitalisation : {{data.valeurMini}}</p>
+<hr>
+<h1 class="text-center">Departement le plus touché</h1>
+<h2 class="text-center">{{dataMax.departement}}</h2>
+<p class="text-center">Réanimation + hospitalisation : {{dataMax.valeurMaxi}}</p>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Covid Detail{% endblock %}
+
+{% block body %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Département</th>
+      <th scope="col">hospitalises</th>
+      <th scope="col">reanimation</th>
+      <th scope="col">nouvellesHospitalisations</th>
+      <th scope="col">nouvellesReanimations</th>
+      <th scope="col">deces</th>
+      <th scope="col">gueris</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in data %}
+        <tr>
+            <th>{{item.nom}}</th>
+            {% if item.hospitalises > 200 %}
+                <td class="table-danger">{{item.hospitalises}}</td>
+                {% else %}
+                <td class="table-warning">{{item.hospitalises}}</td>
+            {% endif %}
+            {% if item.reanimation > 100 %}
+                <td class="table-danger">{{item.reanimation}}</td>
+                {% else %}
+                <td class="table-warning">{{item.reanimation}}</td>
+            {% endif %}
+            {% if item.nouvellesHospitalisations > 50 %}
+                <td class="table-danger">{{item.nouvellesHospitalisations}}</td>
+            {% elseif item.nouvellesHospitalisations > 20 %}
+                <td class="table-warning">{{item.nouvellesHospitalisations}}</td>
+                {% else %}
+                <td class="table-success">{{item.nouvellesHospitalisations}}</td>
+            {% endif %}
+            <td>{{item.nouvellesReanimations}}</td>
+            <td>{{item.deces}}</td>
+            <td>{{item.gueris}}</td>
+        </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
+
+

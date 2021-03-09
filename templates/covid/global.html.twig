@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CovidController!{% endblock %}
+
+{% block body %}
+<h1 class="text-center">{{data.date}}</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Hospitalises</th>
+      <th scope="col">Reanimation</th>
+      <th scope="col">Nouvelles Hospitalisations</th>
+      <th scope="col">Nouvelles Reanimations</th>
+      <th scope="col">Deces</th>
+      <th scope="col">Gueris</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+        <tr>
+            
+            {% if data.hospitalises > 20000 %}
+                <td class="table-danger">{{data.hospitalises}}</td>
+            {% elseif data.hospitalises > 15000 %}
+                <td class="table-warning">{{data.hospitalises}}</td>
+            {% else %}
+                <td class="table-succes">{{data.hospitalises}}</td>
+            {% endif %}
+
+            {% if data.reanimation > 3000 %}
+                <td class="table-danger">{{data.reanimation}}</td>
+            {% elseif data.reanimation > 1500 %}
+                <td class="table-warning">{{data.reanimation}}</td>
+            {% else %}
+                <td class="table-succes">{{data.reanimation}}</td>
+            {% endif %}
+
+            {% if data.nouvellesHospitalisations > 1000 %}
+                <td class="table-danger">{{data.nouvellesHospitalisations}}</td>
+            {% elseif data.nouvellesHospitalisations > 500 %}
+                <td class="table-warning">{{data.nouvellesHospitalisations}}</td>
+            {% else %}
+                <td class="table-succes">{{data.nouvellesHospitalisations}}</td>
+            {% endif %}
+
+            {% if data.nouvellesReanimations > 500 %}
+                <td class="table-danger">{{data.nouvellesReanimations}}</td>
+            {% elseif data.nouvellesReanimations > 300 %}
+                <td class="table-warning">{{data.nouvellesReanimations}}</td>
+            {% else %}
+                <td class="table-succes">{{data.nouvellesReanimations}}</td>
+            {% endif %}
+
+            <td class="table-danger">{{data.deces}}</td>
+            <td class="table-success">{{data.gueris}}</td>
+            
+        </tr>
+    
+  </tbody>
+</table>
+{% endblock %}
